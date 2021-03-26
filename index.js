@@ -28,7 +28,12 @@ myFunction();
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
-function summation(/*Your Code Here*/) {
+function summation(number) {
+  let sum = 0;
+  for (let i = 0; i <= number; i++) {
+    sum += i;
+  }
+  return sum;
   /*Your Code Here*/
 
   }
@@ -56,7 +61,12 @@ const zooAnimals = [
   displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-  function animalNames(/*Your Code Here*/){
+  function animalNames(data){
+    let displayNames = [];
+    data.forEach((item) => {
+      displayNames.push(`name: ${item['animal_name']}, scientific: ${item['scientific_name']}`)
+    })
+    return displayNames;
     /*Your Code Here*/
   }
   
@@ -67,7 +77,12 @@ const zooAnimals = [
   For example: ['jackal, asiatic', .....]
   */
 
-  function lowerCaseNames(/*Your Code Here*/){
+  function lowerCaseNames(data){
+    let newArray = [];
+    data.map((item) => {
+      newArray.push(item['animal_name'].toLowerCase());
+    })
+    return newArray;
     /*Your Code Here*/
   }
   
@@ -77,7 +92,13 @@ const zooAnimals = [
   Using lowPopulationAnimals use .filter() to create a new array of objects which contains only the animals with a population of less than 5.
   */
 
-  function lowPopulationAnimals(/*Your Code Here*/){
+  function lowPopulationAnimals(data){
+    
+    data.filter((item) => {
+      return data['population'] < 5;
+    })
+
+    
     /*Your Code Here*/
   }
   
@@ -88,7 +109,11 @@ const zooAnimals = [
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
 
-  function USApop(/*Your Code Here*/){
+  function USApop(data){
+    data.reduce((accumulator, item) => {
+      accumulator += item.population;
+    }, 0)
+    return accumulator;
     /*Your Code Here*/
   }
   
@@ -101,7 +126,8 @@ const zooAnimals = [
     * The consume function should return the invocation of cb, passing a and b into cb as arguments
   */
 
-  function consume(/*Your Code Here */){
+  function consume(a, b, cb){
+    return cb(a, b);
     /*Your Code Here */
   }
  
@@ -109,20 +135,23 @@ const zooAnimals = [
   /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
  // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
   
-function add(/*Your Code Here */){
+function add(a, b){
+  return a + b;
     /*Your Code Here*/
   }
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
   
-function multiply(/*Your Code Here */){
+function multiply(a, b){
+  return a * b;
    /*Your Code Here */
   }
 
  // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
   
-function greeting(/*Your Code Here */){
-   return /*Your Code Here */
+function greeting(firstName, lastName){
+
+   return `Hello ${firstName} ${lastName}, nice to meet you!`;
   }
   
   // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁 
